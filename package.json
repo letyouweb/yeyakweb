@@ -1,0 +1,13 @@
+{
+  "name": "yeyakweb",
+  "version": "1.0.0",
+  "description": "예약웹 - 자영업자 전문 웹사이트",
+  "scripts": {
+    "build": "echo 'Static site - no build needed'",
+    "dev": "python -m http.server 8000",
+    "start": "python -m http.server 8000"
+  },
+  "keywords": ["booking", "reservation", "website"],
+  "author": "letyouweb",
+  "license": "MIT"
+}

@@ -1,0 +1,27 @@
+{
+  "rewrites": [
+    {
+      "source": "/admin-dashboard",
+      "destination": "/public/admin-dashboard.html"
+    },
+    {
+      "source": "/admin-login",
+      "destination": "/public/admin-login.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
+        }
+      ]
+    }
+  ]
+}
