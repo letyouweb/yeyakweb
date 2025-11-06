@@ -1,11 +1,14 @@
 {
+  "buildCommand": null,
+  "outputDirectory": ".",
+  "installCommand": null,
   "routes": [
     {
       "src": "/admin-dashboard",
       "dest": "/public/admin-dashboard.html"
     },
     {
-      "src": "/admin-login",
+      "src": "/admin-login",  
       "dest": "/public/admin-login.html"
     },
     {
