@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="예약웹 - 자영업자를 위한 50만원 프리미엄 웹사이트 제작. 3일 완성, 예약 시스템 포함.">
+  <meta name="keywords" content="웹사이트 제작, 자영업자, 예약 시스템, 네일샵, 카페, PT센터">
+  <title>예약웹 - 예약되는 웹사이트 | 자영업자 전문 웹 제작</title>
+  
+  <!-- Pretendard 폰트 -->
+  <link rel="stylesheet" as="style" crossorigin 
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  
+  <!-- Font Awesome (아이콘) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    }
+    
+    body {
+      line-height: 1.6;
+      color: #333;
+      overflow-x: hidden;
+    }
+    
+    /* 헤더 */
+    header {
+      background: white;
+      padding: 20px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      color: #4A90E2;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .nav-buttons {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .btn {
+      padding: 12px 25px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    
+    .btn-outline {
+      border: 2px solid #4A90E2;
+      color: #4A90E2;
+      background: white;
+    }
+    
+    .btn-outline:hover {
+      background: #4A90E2;
+      color: white;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, #4A90E2 0%, #7ED321 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+    }
+    
+    /* 히어로 섹션 */
+    .hero {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%23ffffff"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%23ffffff"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23ffffff"/></svg>') no-repeat bottom;
+      background-size: cover;
+      opacity: 0.1;
+    }
+    
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 900;
+      margin-bottom: 20px;
+      letter-spacing: -0.03em;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .hero-subtitle {
+      font-size: 24px;
+      margin-bottom: 20px;
+      font-weight: 500;
+      opacity: 0.95;
+    }
+    
+    .hero-features {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 40px 0;
+      flex-wrap: wrap;
+    }
+    
+    .hero-feature {
+      text-align: center;
+    }
+    
+    .hero-feature-number {
+      font-size: 48px;
+      font-weight: 800;
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    .hero-feature-label {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+    
+    .hero-cta {
+      margin-top: 40px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn-hero {
+      padding: 18px 40px;
+      font-size: 18px;
+      border-radius: 30px;
+      font-weight: 700;
+    }
+    
+    .btn-white {
+      background: white;
+      color: #667eea;
+    }
+    
+    .btn-white:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    
+    .powered-by {
+      margin-top: 40px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+    
+    .powered-by a {
+      color: white;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+    
+    /* 섹션 공통 */
+    section {
+      padding: 80px 20px;
+    }
+    
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 60px;
+    }
+    
+    /* 타겟 업종 */
+    .industries {
+      background: #f8f9fa;
+    }
+    
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 25px;
+    }
+    
+    .industry-card {
+      background: white;
+      padding: 35px 20px;
+      border-radius: 15px;
+      text-align: center;
+      transition: all 0.3s;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      cursor: pointer;
+    }
+    
+    .industry-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    
+    .industry-icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+      display: block;
+    }
+    
+    .industry-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+    }
+    
+    /* 포트폴리오 샘플 */
+    .portfolio {
+      background: white;
+    }
+    
+    .samples-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+    }
+    
+    .sample-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: all 0.3s;
+    }
+    
+    .sample-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+    
+    .sample-image {
+      position: relative;
+      height: 220px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    
+    .sample-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    .sample-card:hover .sample-overlay {
+      opacity: 1;
+    }
+    
+    .btn-view {
+      background: white;
+      color: #667eea;
+      padding: 12px 30px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.2s;
+    }
+    
+    .btn-view:hover {
+      transform: scale(1.1);
+    }
+    
+    .sample-info {
+      padding: 25px;
+    }
+    
+    .sample-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    
+    .sample-description {
+      color: #666;
+      margin-bottom: 15px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    
+    .sample-features {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+    
+    .feature-tag {
+      background: #f0f0f0;
+      padding: 5px 12px;
+      border-radius: 15px;
+      font-size: 13px;
+      color: #555;
+    }
+    
+    .sample-link {
+      color: #4A90E2;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 10px;
+    }
+    
+    .sample-link:hover {
+      text-decoration: underline;
+    }
+    
+    /* 핵심 기능 */
+    .features {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+    
+    .feature-item {
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .feature-icon {
+      font-size: 56px;
+      margin-bottom: 20px;
+      display: block;
+    }
+    
+    .feature-item h3 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+    
+    .feature-item p {
+      font-size: 16px;
+      line-height: 1.8;
+      opacity: 0.9;
+    }
+    
+    /* 가격 */
+    .pricing {
+      background: #f8f9fa;
+    }
+    
+    .price-card {
+      max-width: 600px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 60px 40px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 15px 50px rgba(102, 126, 234, 0.3);
+    }
+    
+    .price-card h3 {
+      font-size: 32px;
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
+    
+    .price {
+      font-size: 64px;
+      font-weight: 900;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+    
+    .price-period {
+      font-size: 18px;
+      opacity: 0.9;
+      margin-bottom: 40px;
+      display: block;
+    }
+    
+    .features-list {
+      text-align: left;
+      font-size: 17px;
+      line-height: 2.2;
+      margin-bottom: 40px;
+      padding-left: 20px;
+    }
+    
+    .features-list li {
+      list-style: none;
+      position: relative;
+      padding-left: 30px;
+    }
+    
+    .features-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    
+    /* CTA */
+    .cta {
+      background: linear-gradient(135deg, #4A90E2 0%, #7ED321 100%);
+      color: white;
+      text-align: center;
+    }
+    
+    .cta h2 {
+      font-size: 42px;
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+    
+    .cta p {
+      font-size: 20px;
+      margin-bottom: 40px;
+      opacity: 0.95;
+    }
+    
+    /* 푸터 */
+    footer {
+      background: #2c3e50;
+      color: white;
+      padding: 60px 20px 30px;
+    }
+    
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-section h3 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    
+    .footer-section p,
+    .footer-section a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      line-height: 2;
+      display: block;
+    }
+    
+    .footer-section a:hover {
+      color: white;
+    }
+    
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.2);
+      padding-top: 30px;
+      text-align: center;
+      color: rgba(255,255,255,0.7);
+    }
+    
+    .parent-link {
+      margin-top: 20px;
+      padding-top: 20px;
+    }
+    
+    .parent-link a {
+      color: #7ED321;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+    }
+    
+    .parent-link a:hover {
+      text-decoration: underline;
+    }
+    
+    /* 모바일 최적화 */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 36px;
+      }
+      
+      .hero-subtitle {
+        font-size: 18px;
+      }
+      
+      .hero-features {
+        gap: 20px;
+      }
+      
+      .hero-feature-number {
+        font-size: 36px;
+      }
+      
+      .section-title {
+        font-size: 32px;
+      }
+      
+      .samples-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .nav-buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+    
+    /* 애니메이션 */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease-out;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 헤더 -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <span>📅</span> 예약웹
+      </div>
+      <div class="nav-buttons">
+        <a href="#portfolio" class="btn btn-outline">샘플 보기</a>
+        <a href="https://smartstore.naver.com/yeyakweb" target="_blank" class="btn btn-primary">지금 주문하기</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 히어로 섹션 -->
+  <section class="hero">
+    <div class="hero-content fade-in-up">
+      <h1>예약되는 웹사이트</h1>
+      <p class="hero-subtitle">
+        24시간 자동 예약 + AI 상담<br>
+        3일 완성, 50만원
+      </p>
+      
+      <div class="hero-features">
+        <div class="hero-feature">
+          <span class="hero-feature-number">3일</span>
+          <span class="hero-feature-label">제작 완료</span>
+        </div>
+        <div class="hero-feature">
+          <span class="hero-feature-number">50만원</span>
+          <span class="hero-feature-label">추가비용 없음</span>
+        </div>
+        <div class="hero-feature">
+          <span class="hero-feature-number">24시간</span>
+          <span class="hero-feature-label">자동 예약</span>
+        </div>
+      </div>
+      
+      <div class="hero-cta">
+        <a href="https://smartstore.naver.com/yeyakweb" target="_blank" class="btn btn-hero btn-white">
+          <i class="fas fa-shopping-cart"></i> 지금 주문하기
+        </a>
+        <a href="#portfolio" class="btn btn-hero btn-primary">
+          <i class="fas fa-eye"></i> 샘플 먼저 보기
+        </a>
+      </div>
+      
+      <p class="powered-by">
+        Powered by <a href="https://letyou.kr" target="_blank">LetYou</a> - 로펌도 만드는 프리미엄 웹에이전시
+      </p>
+    </div>
+  </section>
+
+  <!-- 타겟 업종 -->
+  <section class="industries">
+    <div class="section-container">
+      <h2 class="section-title">이런 사장님들이 선택합니다</h2>
+      <p class="section-subtitle">예약 시스템이 필수인 업종</p>
+      
+      <div class="industries-grid">
+        <div class="industry-card">
+          <span class="industry-icon">🎨</span>
+          <div class="industry-name">네일샵 · 미용실</div>
+        </div>
+        <div class="industry-card">
+          <span class="industry-icon">☕</span>
+          <div class="industry-name">카페 · 디저트</div>
+        </div>
+        <div class="industry-card">
+          <span class="industry-icon">💪</span>
+          <div class="industry-name">헬스 · PT센터</div>
+        </div>
+        <div class="industry-card">
+          <span class="industry-icon">🧘</span>
+          <div class="industry-name">필라테스 · 요가</div>
+        </div>
+        <div class="industry-card">
+          <span class="industry-icon">🏥</span>
+          <div class="industry-name">피부과 · 의원</div>
+        </div>
+        <div class="industry-card">
+          <span class="industry-icon">🐶</span>
+          <div class="industry-name">반려동물 호텔</div>
+        </div>
+        <div class="industry-card">
+          <span class="industry-icon">🏡</span>
+          <div class="industry-name">공간대여</div>
+        </div>
+        <div class="industry-card">
+          <span class="industry-icon">🥩</span>
+          <div class="industry-name">고기집 · 한식</div>
+        </div>
+        <div class="industry-card">
+          <span class="industry-icon">🎵</span>
+          <div class="industry-name">K-POP 학원</div>
+        </div>
+        <div class="industry-card">
+          <span class="industry-icon">🚗</span>
+          <div class="industry-name">세차장</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 포트폴리오 -->
+  <section id="portfolio" class="portfolio">
+    <div class="section-container">
+      <h2 class="section-title">실제 작동하는 샘플을 확인하세요</h2>
+      <p class="section-subtitle">클릭하면 실제 웹사이트로 이동합니다</p>
+      
+      <div class="samples-grid">
+        
+        <!-- 샘플 1: 반려동물 호텔 -->
+        <div class="sample-card">
+          <div class="sample-image">
+            <span style="font-size: 80px;">🐶</span>
+            <div class="sample-overlay">
+              <a href="https://예약봇.kr" target="_blank" class="btn-view">
+                실제 사이트 보기 →
+              </a>
+            </div>
+          </div>
+          <div class="sample-info">
+            <h3 class="sample-title">🐶 반려동물 호텔</h3>
+            <p class="sample-description">실시간 CCTV + 호텔 예약 + 미용 + 요금표</p>
+            <div class="sample-features">
+              <span class="feature-tag">CCTV</span>
+              <span class="feature-tag">예약</span>
+              <span class="feature-tag">요금표</span>
+            </div>
+            <a href="https://예약봇.kr" target="_blank" class="sample-link">
+              예약봇.kr <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+        
+
+        
+        <!-- 샘플 2: K-POP 학원 -->
+        <div class="sample-card">
+          <div class="sample-image">
+            <span style="font-size: 80px;">🎵</span>
+            <div class="sample-overlay">
+              <a href="https://simulatordrone.com" target="_blank" class="btn-view">
+                실제 사이트 보기 →
+              </a>
+            </div>
+          </div>
+          <div class="sample-info">
+            <h3 class="sample-title">🎵 K-POP 댄스 학원</h3>
+            <p class="sample-description">수업 스케줄 + 강사 소개 + 영상 갤러리 + 실시간 예약</p>
+            <div class="sample-features">
+              <span class="feature-tag">예약 시스템</span>
+              <span class="feature-tag">유튜브 연동</span>
+              <span class="feature-tag">강사 소개</span>
+            </div>
+            <a href="https://simulatordrone.com" target="_blank" class="sample-link">
+              simulatordrone.com <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- 샘플 3: 네일샵 -->
+        <div class="sample-card">
+          <div class="sample-image">
+            <span style="font-size: 80px;">💅</span>
+            <div class="sample-overlay">
+              <a href="https://idpix.app" target="_blank" class="btn-view">
+                실제 사이트 보기 →
+              </a>
+            </div>
+          </div>
+          <div class="sample-info">
+            <h3 class="sample-title">💅 네일샵 / 미용실</h3>
+            <p class="sample-description">포트폴리오 갤러리 + 가격표 + 디자이너 소개 + 예약</p>
+            <div class="sample-features">
+              <span class="feature-tag">갤러리</span>
+              <span class="feature-tag">예약</span>
+              <span class="feature-tag">가격표</span>
+            </div>
+            <a href="https://idpix.app" target="_blank" class="sample-link">
+              idpix.app <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- 샘플 4: PT센터 -->
+        <div class="sample-card">
+          <div class="sample-image">
+            <span style="font-size: 80px;">💪</span>
+            <div class="sample-overlay">
+              <a href="https://24bot.kr" target="_blank" class="btn-view">
+                실제 사이트 보기 →
+              </a>
+            </div>
+          </div>
+          <div class="sample-info">
+            <h3 class="sample-title">💪 헬스장 / PT센터</h3>
+            <p class="sample-description">트레이너 소개 + 회원권 + Before/After + 예약</p>
+            <div class="sample-features">
+              <span class="feature-tag">회원 관리</span>
+              <span class="feature-tag">예약</span>
+              <span class="feature-tag">갤러리</span>
+            </div>
+            <a href="https://24bot.kr" target="_blank" class="sample-link">
+              24bot.kr <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- 샘플 5: 카페 -->
+        <div class="sample-card">
+          <div class="sample-image">
+            <span style="font-size: 80px;">☕</span>
+            <div class="sample-overlay">
+              <a href="https://idpix.photo" target="_blank" class="btn-view">
+                실제 사이트 보기 →
+              </a>
+            </div>
+          </div>
+          <div class="sample-info">
+            <h3 class="sample-title">☕ 카페 / 디저트</h3>
+            <p class="sample-description">메뉴판 + 인스타 연동 + 단체 예약 + 공간 소개</p>
+            <div class="sample-features">
+              <span class="feature-tag">메뉴판</span>
+              <span class="feature-tag">예약</span>
+              <span class="feature-tag">SNS 연동</span>
+            </div>
+            <a href="https://idpix.photo" target="_blank" class="sample-link">
+              idpix.photo <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- 샘플 6: 필라테스 -->
+        <div class="sample-card">
+          <div class="sample-image">
+            <span style="font-size: 80px;">🧘</span>
+            <div class="sample-overlay">
+              <a href="https://yeyakbot.kr" target="_blank" class="btn-view">
+                실제 사이트 보기 →
+              </a>
+            </div>
+          </div>
+          <div class="sample-info">
+            <h3 class="sample-title">🧘 필라테스 / 요가</h3>
+            <p class="sample-description">수업 시간표 + 강사 소개 + 회원권 + 실시간 예약</p>
+            <div class="sample-features">
+              <span class="feature-tag">시간표</span>
+              <span class="feature-tag">예약</span>
+              <span class="feature-tag">회원권</span>
+            </div>
+            <a href="https://yeyakbot.kr" target="_blank" class="sample-link">
+              yeyakbot.kr <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- 샘플 7: 피부과 -->
+        <div class="sample-card">
+          <div class="sample-image">
+            <span style="font-size: 80px;">🏥</span>
+            <div class="sample-overlay">
+              <a href="https://kloopi.app" target="_blank" class="btn-view">
+                실제 사이트 보기 →
+              </a>
+            </div>
+          </div>
+          <div class="sample-info">
+            <h3 class="sample-title">🏥 피부과 / 의원</h3>
+            <p class="sample-description">시술 안내 + Before/After + 온라인 예약 + 원장 소개</p>
+            <div class="sample-features">
+              <span class="feature-tag">예약 시스템</span>
+              <span class="feature-tag">시술 안내</span>
+              <span class="feature-tag">갤러리</span>
+            </div>
+            <a href="https://kloopi.app" target="_blank" class="sample-link">
+              kloopi.app <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- 샘플 8: 원데이 클래스 -->
+        <div class="sample-card">
+          <div class="sample-image">
+            <span style="font-size: 80px;">🎨</span>
+            <div class="sample-overlay">
+              <a href="https://yeyakbot.co.kr" target="_blank" class="btn-view">
+                실제 사이트 보기 →
+              </a>
+            </div>
+          </div>
+          <div class="sample-info">
+            <h3 class="sample-title">🎨 공방 / 원데이클래스</h3>
+            <p class="sample-description">클래스 스케줄 + 수강생 작품 + 예약 + 선물권</p>
+            <div class="sample-features">
+              <span class="feature-tag">클래스 예약</span>
+              <span class="feature-tag">갤러리</span>
+              <span class="feature-tag">선물권</span>
+            </div>
+            <a href="https://yeyakbot.co.kr" target="_blank" class="sample-link">
+              yeyakbot.co.kr <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- 샘플 9: 추가 업종 (옷가게 등) -->
+        <div class="sample-card">
+          <div class="sample-image">
+            <span style="font-size: 80px;">👕</span>
+            <div class="sample-overlay">
+              <a href="https://smartstore.naver.com/yeyakweb" target="_blank" class="btn-view">
+                문의하기 →
+              </a>
+            </div>
+          </div>
+          <div class="sample-info">
+            <h3 class="sample-title">+ 기타 업종</h3>
+            <p class="sample-description">옷가게, 세차장, 부동산 등 모든 자영업 가능</p>
+            <div class="sample-features">
+              <span class="feature-tag">맞춤 제작</span>
+              <span class="feature-tag">상담 필요</span>
+            </div>
+            <a href="https://smartstore.naver.com/yeyakweb" target="_blank" class="sample-link">
+              문의하기 <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- 핵심 기능 -->
+  <section class="features">
+    <div class="section-container">
+      <h2 class="section-title">왜 예약웹인가?</h2>
+      <p class="section-subtitle">예약 문의 때문에 전화 받기 힘드시죠?</p>
+      
+      <div class="features-grid">
+        <div class="feature-item">
+          <span class="feature-icon">📅</span>
+          <h3>24시간 자동 예약</h3>
+          <p>
+            밤 12시에도 예약 가능<br>
+            놓치는 고객 없이<br>
+            자동으로 예약 접수
+          </p>
+        </div>
+        
+        <div class="feature-item">
+          <span class="feature-icon">💬</span>
+          <h3>AI 자동 상담</h3>
+          <p>
+            가격 문의, 위치 안내<br>
+            영업시간 문의까지<br>
+            AI가 24시간 자동 응대
+          </p>
+        </div>
+        
+        <div class="feature-item">
+          <span class="feature-icon">📱</span>
+          <h3>카톡 알림 발송</h3>
+          <p>
+            예약 접수 즉시<br>
+            사장님께 알림<br>
+            놓치는 예약 없음
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 가격 -->
+  <section class="pricing">
+    <div class="section-container">
+      <h2 class="section-title">투명한 가격</h2>
+      <p class="section-subtitle">숨은 비용 없음</p>
+      
+      <div class="price-card">
+        <h3>예약웹 패키지</h3>
+        <div class="price">50만원</div>
+        <span class="price-period">일시불 · 추가비용 없음</span>
+        
+        <ul class="features-list">
+          <li>완성형 웹사이트 (반응형)</li>
+          <li>24시간 자동 예약 시스템</li>
+          <li>AI 자동 상담 챗봇</li>
+          <li>카톡 알림 발송</li>
+          <li>모바일 완벽 최적화</li>
+          <li>1년 호스팅 무료</li>
+          <li>도메인 연결 지원</li>
+          <li>3일 제작 완료</li>
+          <li>1년 무료 유지보수</li>
+        </ul>
+        
+        <a href="https://smartstore.naver.com/yeyakweb" target="_blank" class="btn btn-hero btn-white">
+          <i class="fas fa-shopping-cart"></i> 지금 주문하기
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="section-container">
+      <h2>지금 시작하세요</h2>
+      <p>3일 후, 당신의 비즈니스가 달라집니다</p>
+      
+      <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
+        <a href="https://smartstore.naver.com/yeyakweb" target="_blank" class="btn btn-hero btn-white">
+          <i class="fas fa-shopping-cart"></i> 스마트스토어에서 주문
+        </a>
+        <a href="#portfolio" class="btn btn-hero" style="background: rgba(255,255,255,0.2); color: white;">
+          <i class="fas fa-eye"></i> 샘플 다시 보기
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 푸터 -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>예약웹 (YeyakWeb)</h3>
+          <p>자영업자를 위한<br>프리미엄 웹사이트 제작</p>
+          <p style="margin-top: 20px;">
+            📧 문의: yeyakweb@letyou.kr<br>
+            💬 카톡: @예약웹<br>
+            🛒 주문: 네이버 스마트스토어
+          </p>
+        </div>
+        
+        <div class="footer-section">
+          <h3>빠른 링크</h3>
+          <a href="#portfolio">샘플 보기</a>
+          <a href="https://smartstore.naver.com/yeyakweb" target="_blank">주문하기</a>
+          <a href="https://letyou.kr" target="_blank">LetYou 포트폴리오</a>
+        </div>
+        
+        <div class="footer-section">
+          <h3>샘플 사이트</h3>
+          <a href="https://simulatordrone.com" target="_blank">K-POP 학원</a>
+          <a href="https://idpix.app" target="_blank">네일샵</a>
+          <a href="https://24bot.kr" target="_blank">PT센터</a>
+          <a href="https://yeyakbot.co.kr" target="_blank">원데이클래스</a>
+        </div>
+        
+        <div class="footer-section">
+          <h3>사업자 정보</h3>
+          <p>
+            상호: 렛유(LetYou)<br>
+            대표: 최서희<br>
+            사업자등록번호: 205-26-70741<br>
+            전화번호 : 010-8241-1619<br>
+            이메일 : yeyakweb@letyou.kr
+            주소: 서울특별시 강남구 영동대로602,6층 Z63<br>            
+          </p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2025 예약웹 (YeyakWeb) · All rights reserved</p>
+        
+        <div class="parent-link">
+          <p>프리미엄 서비스가 필요하신가요?</p>
+          <a href="https://letyou.kr" target="_blank">
+            LetYou 프리미엄 웹에이전시 →
+          </a>
+          <p style="margin-top: 10px; font-size: 14px;">
+            로펌 전문 웹사이트 제작 · QUANTOM, ZENTA, QUEST
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 하단 고정 CTA 버튼 (모바일) -->
+  <div style="position: fixed; bottom: 0; left: 0; right: 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 15px; text-align: center; box-shadow: 0 -2px 10px rgba(0,0,0,0.2); z-index: 999; display: none;" id="mobile-cta">
+    <a href="https://smartstore.naver.com/yeyakweb" target="_blank" style="background: white; color: #667eea; padding: 15px 30px; border-radius: 25px; text-decoration: none; font-weight: 700; display: inline-block; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+      <i class="fas fa-shopping-cart"></i> 50만원에 지금 주문하기
+    </a>
+  </div>
+
+  <script>
+    // 모바일 하단 CTA 표시
+    if (window.innerWidth <= 768) {
+      document.getElementById('mobile-cta').style.display = 'block';
+    }
+    
+    // 스크롤 애니메이션
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.sample-card, .industry-card, .feature-item').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
