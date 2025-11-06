@@ -1,0 +1,8 @@
+﻿{
+  "version": 2,
+  "routes": [
+    { "src": "/",                "dest": "/index.html" },
+    { "src": "/admin-login",     "dest": "/admin-login.html" },
+    { "src": "/admin-dashboard", "dest": "/admin-dashboard.html" }
+  ]
+}

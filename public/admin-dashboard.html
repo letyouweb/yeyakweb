@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 대시보드 - 예약웹 FAQ 관리</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* 헤더 */
+        .dashboard-header {
+            background: white;
+            border-radius: 25px;
+            padding: 30px 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .header-title-section {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .header-title-section h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-title-section h1 i {
+            color: #667eea;
+        }
+
+        .header-subtitle {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .header-user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 20px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: #333;
+            font-size: 15px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 15px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-danger {
+            background: #ff4757;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+        }
+
+        .btn-danger:hover {
+            background: #ee3344;
+            transform: translateY(-2px);
+        }
+
+        .btn-logout {
+            background: #f8f9fa;
+            color: #666;
+            border: 2px solid #e0e0e0;
+        }
+
+        .btn-logout:hover {
+            background: #ff4757;
+            color: white;
+            border-color: #ff4757;
+        }
+
+        /* 통계 카드 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: white;
+        }
+
+        .stat-icon.purple {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .stat-icon.green {
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+        }
+
+        .stat-icon.orange {
+            background: linear-gradient(135deg, #f2994a 0%, #f2c94c 100%);
+        }
+
+        .stat-info {
+            flex: 1;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 800;
+            color: #333;
+        }
+
+        /* 섹션 카드 */
+        .section-card {
+            background: white;
+            border-radius: 25px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title i {
+            color: #667eea;
+            font-size: 28px;
+        }
+
+        /* 폼 스타일 */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .form-group label i {
+            color: #667eea;
+            margin-right: 5px;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            font-size: 15px;
+            transition: all 0.3s;
+            outline: none;
+            font-family: 'Pretendard', sans-serif;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* FAQ 목록 */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .faq-item {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            border-radius: 20px;
+            padding: 25px;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: #667eea;
+        }
+
+        .faq-question {
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .faq-question i {
+            color: #667eea;
+            font-size: 20px;
+            margin-top: 2px;
+        }
+
+        .faq-answer {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            white-space: pre-wrap;
+        }
+
+        .faq-actions {
+            display: flex;
+            gap: 10px;
+            padding-left: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn-small {
+            padding: 8px 18px;
+            font-size: 13px;
+        }
+
+        /* 빈 상태 */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        .empty-state i {
+            font-size: 64px;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+
+        .empty-state p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* 알림 */
+        .notice {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .notice i {
+            font-size: 24px;
+            color: #667eea;
+            margin-top: 2px;
+        }
+
+        .notice-content {
+            flex: 1;
+        }
+
+        .notice-title {
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .notice-text {
+            color: #555;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .dashboard-header {
+                padding: 20px;
+            }
+
+            .header-title-section h1 {
+                font-size: 24px;
+            }
+
+            .section-card {
+                padding: 25px 20px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            .stat-value {
+                font-size: 28px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 대시보드 헤더 -->
+        <div class="dashboard-header">
+            <div class="header-title-section">
+                <h1>
+                    <i class="fas fa-tachometer-alt"></i>
+                    관리자 대시보드
+                </h1>
+                <p class="header-subtitle">AI 챗봇 FAQ 관리 시스템</p>
+            </div>
+            <div class="header-user-info">
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span class="user-name" id="userName">관리자</span>
+                </div>
+                <button class="btn btn-secondary" onclick="window.open('index-with-chatbot.html', '_blank')">
+                    <i class="fas fa-eye"></i> 웹사이트 보기
+                </button>
+                <button class="btn btn-logout" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> 로그아웃
+                </button>
+            </div>
+        </div>
+
+        <!-- 통계 카드 -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon purple">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <div class="stat-info">
+                    <div class="stat-label">등록된 FAQ</div>
+                    <div class="stat-value" id="faqCount">0</div>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon green">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="stat-info">
+                    <div class="stat-label">챗봇 상태</div>
+                    <div class="stat-value" style="font-size: 20px; color: #56ab2f;">활성화</div>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon orange">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-info">
+                    <div class="stat-label">마지막 업데이트</div>
+                    <div class="stat-value" style="font-size: 18px;" id="lastUpdate">-</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ 추가 섹션 -->
+        <div class="section-card">
+            <h2 class="section-title">
+                <i class="fas fa-plus-circle"></i>
+                FAQ 추가하기
+            </h2>
+
+            <div class="notice">
+                <i class="fas fa-lightbulb"></i>
+                <div class="notice-content">
+                    <div class="notice-title">💡 FAQ 작성 팁</div>
+                    <div class="notice-text">
+                        고객이 자주 묻는 질문과 답변을 입력하면 AI 챗봇이 자동으로 응답합니다.<br>
+                        질문에는 다양한 표현을 포함하세요. (예: "가격이 얼마예요?", "비용", "요금")<br>
+                        답변은 친절하고 명확하게 작성하세요.
+                    </div>
+                </div>
+            </div>
+
+            <form id="addFaqForm" onsubmit="addFaq(event)">
+                <div class="form-group">
+                    <label for="question">
+                        <i class="fas fa-question"></i> 질문 *
+                    </label>
+                    <input 
+                        type="text" 
+                        id="question" 
+                        class="form-input" 
+                        placeholder="예: 예약은 어떻게 하나요?" 
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="answer">
+                        <i class="fas fa-comment"></i> 답변 *
+                    </label>
+                    <textarea 
+                        id="answer" 
+                        class="form-textarea" 
+                        placeholder="예: 홈페이지의 예약하기 메뉴에서 온라인으로 예약하실 수 있습니다. 또는 전화(02-1234-5678)로 문의주세요." 
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> FAQ 추가
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="loadDefaultFaqs()">
+                        <i class="fas fa-download"></i> 기본 FAQ 불러오기
+                    </button>
+                    <button type="button" class="btn btn-danger" onclick="clearAllFaqs()">
+                        <i class="fas fa-trash"></i> 전체 삭제
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- FAQ 목록 섹션 -->
+        <div class="section-card">
+            <h2 class="section-title">
+                <i class="fas fa-list"></i>
+                등록된 FAQ 목록 (<span id="faqListCount">0</span>개)
+            </h2>
+            
+            <div id="faqList" class="faq-list">
+                <div class="empty-state">
+                    <i class="fas fa-inbox"></i>
+                    <p>
+                        등록된 FAQ가 없습니다.<br>
+                        위에서 FAQ를 추가하거나 기본 FAQ를 불러오세요.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 로그인 체크
+        function checkAuth() {
+            const isLoggedIn = localStorage.getItem('yeyakwebAdmin') || sessionStorage.getItem('yeyakwebAdmin');
+            
+            if (isLoggedIn !== 'true') {
+                alert('로그인이 필요합니다.');
+                window.location.href = 'admin-login.html';
+                return false;
+            }
+            
+            // 사용자 이름 표시
+            const adminId = localStorage.getItem('yeyakwebAdminId') || sessionStorage.getItem('yeyakwebAdminId');
+            if (adminId) {
+                document.getElementById('userName').textContent = adminId;
+            }
+            
+            return true;
+        }
+
+        // 로그아웃
+        function logout() {
+            if (confirm('로그아웃 하시겠습니까?')) {
+                localStorage.removeItem('yeyakwebAdmin');
+                localStorage.removeItem('yeyakwebAdminId');
+                sessionStorage.removeItem('yeyakwebAdmin');
+                sessionStorage.removeItem('yeyakwebAdminId');
+                window.location.href = 'admin-login.html';
+            }
+        }
+
+        // 기본 FAQ 데이터
+        const DEFAULT_FAQS = [
+            {
+                question: "가격이 얼마예요?",
+                answer: "예약웹 패키지는 **50만원 일시불**입니다.\n\n✅ 포함 내역:\n- 완성형 웹사이트 (반응형)\n- 24시간 자동 예약 시스템\n- AI 자동 상담 챗봇\n- 카톡 알림 발송\n- 1년 호스팅 무료\n- 1년 무료 유지보수\n\n추가 비용 없이 모든 기능이 포함되어 있습니다!"
+            },
+            {
+                question: "제작 기간은 얼마나 걸리나요?",
+                answer: "**3일 내 제작 완료**됩니다!\n\n📅 진행 프로세스:\n1일차: 상담 & 디자인 확정\n2일차: 웹사이트 제작\n3일차: 최종 검수 & 오픈\n\n급하신 경우 2일 특급 제작도 가능합니다. (별도 문의)"
+            },
+            {
+                question: "어떤 기능이 포함되나요?",
+                answer: "**예약웹 핵심 기능**\n\n📅 24시간 자동 예약 시스템\n💬 AI 자동 상담 챗봇\n📱 카톡 알림 발송\n📊 예약 현황 대시보드\n🎨 업종별 맞춤 디자인\n📱 모바일 완벽 최적화\n🔒 관리자 페이지\n\n모든 기능이 50만원에 포함됩니다!"
+            },
+            {
+                question: "연락처를 알려주세요",
+                answer: "**예약웹 연락처**\n\n📧 이메일: yeyakweb@letyou.kr\n💬 카카오톡: @예약웹\n🛒 주문: 네이버 스마트스토어\n\n상담 가능 시간: 평일 09:00-18:00\n(주말/공휴일 카톡 상담 가능)"
+            },
+            {
+                question: "우리 업종도 가능한가요?",
+                answer: "**100개 이상 업종 제작 경험**이 있습니다!\n\n✅ 제작 가능 업종:\n- 네일샵, 미용실, 헤어샵\n- 카페, 레스토랑, 베이커리\n- PT센터, 헬스, 필라테스\n- 피부과, 의원, 치과\n- 공방, 원데이 클래스\n- 스터디카페, 독서실\n- 세차장, 정비소\n- 그 외 모든 자영업\n\n특수 업종도 상담 가능합니다!"
+            },
+            {
+                question: "도메인과 호스팅은?",
+                answer: "**도메인 & 호스팅 포함**\n\n✅ 1년 호스팅 무료 제공\n✅ 도메인 연결 지원\n✅ SSL 인증서 무료 설치 (https://)\n\n2년차부터는 연간 관리비 10만원\n(호스팅 + 도메인 + 유지보수 포함)"
+            },
+            {
+                question: "수정이 가능한가요?",
+                answer: "**1년 무료 유지보수 포함**\n\n✅ 제작 후 무료 수정:\n- 텍스트 내용 수정\n- 이미지 교체\n- 가격/메뉴 변경\n- 영업시간 수정\n- FAQ 추가/수정\n\n✅ 유지보수 기간: 1년\n✅ 수정 횟수: 제한 없음"
+            }
+        ];
+
+        // FAQ 로드
+        function loadFaqs() {
+            try {
+                const faqs = localStorage.getItem('yeyakwebFaqs');
+                if (faqs) {
+                    return JSON.parse(faqs);
+                }
+            } catch (e) {
+                console.error('FAQ 로드 실패:', e);
+            }
+            return [];
+        }
+
+        // FAQ 저장
+        function saveFaqs(faqs) {
+            localStorage.setItem('yeyakwebFaqs', JSON.stringify(faqs));
+            localStorage.setItem('yeyakwebFaqsLastUpdate', new Date().toISOString());
+            updateStats();
+            renderFaqs();
+        }
+
+        // 통계 업데이트
+        function updateStats() {
+            const faqs = loadFaqs();
+            document.getElementById('faqCount').textContent = faqs.length;
+            document.getElementById('faqListCount').textContent = faqs.length;
+            
+            const lastUpdate = localStorage.getItem('yeyakwebFaqsLastUpdate');
+            if (lastUpdate) {
+                const date = new Date(lastUpdate);
+                const now = new Date();
+                const diffMs = now - date;
+                const diffMins = Math.floor(diffMs / 60000);
+                const diffHours = Math.floor(diffMs / 3600000);
+                const diffDays = Math.floor(diffMs / 86400000);
+                
+                let updateText;
+                if (diffMins < 1) {
+                    updateText = '방금 전';
+                } else if (diffMins < 60) {
+                    updateText = `${diffMins}분 전`;
+                } else if (diffHours < 24) {
+                    updateText = `${diffHours}시간 전`;
+                } else if (diffDays === 1) {
+                    updateText = '어제';
+                } else if (diffDays < 7) {
+                    updateText = `${diffDays}일 전`;
+                } else {
+                    updateText = date.toLocaleDateString('ko-KR');
+                }
+                
+                document.getElementById('lastUpdate').textContent = updateText;
+            }
+        }
+
+        // FAQ 렌더링
+        function renderFaqs() {
+            const faqs = loadFaqs();
+            const faqList = document.getElementById('faqList');
+            
+            if (faqs.length === 0) {
+                faqList.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-inbox"></i>
+                        <p>
+                            등록된 FAQ가 없습니다.<br>
+                            위에서 FAQ를 추가하거나 기본 FAQ를 불러오세요.
+                        </p>
+                    </div>
+                `;
+                return;
+            }
+            
+            faqList.innerHTML = faqs.map((faq, index) => `
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        <span>${faq.question}</span>
+                    </div>
+                    <div class="faq-answer">${faq.answer}</div>
+                    <div class="faq-actions">
+                        <button class="btn btn-secondary btn-small" onclick="editFaq(${index})">
+                            <i class="fas fa-edit"></i> 수정
+                        </button>
+                        <button class="btn btn-danger btn-small" onclick="deleteFaq(${index})">
+                            <i class="fas fa-trash"></i> 삭제
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // FAQ 추가
+        function addFaq(event) {
+            event.preventDefault();
+            
+            const question = document.getElementById('question').value.trim();
+            const answer = document.getElementById('answer').value.trim();
+            
+            if (!question || !answer) {
+                alert('❌ 질문과 답변을 모두 입력해주세요.');
+                return;
+            }
+            
+            const faqs = loadFaqs();
+            faqs.push({ question, answer });
+            saveFaqs(faqs);
+            
+            document.getElementById('question').value = '';
+            document.getElementById('answer').value = '';
+            
+            alert('✅ FAQ가 추가되었습니다!');
+        }
+
+        // FAQ 삭제
+        function deleteFaq(index) {
+            if (!confirm('정말 이 FAQ를 삭제하시겠습니까?')) {
+                return;
+            }
+            
+            const faqs = loadFaqs();
+            faqs.splice(index, 1);
+            saveFaqs(faqs);
+            
+            alert('✅ FAQ가 삭제되었습니다.');
+        }
+
+        // FAQ 수정
+        function editFaq(index) {
+            const faqs = loadFaqs();
+            const faq = faqs[index];
+            
+            const newQuestion = prompt('질문을 수정하세요:', faq.question);
+            if (newQuestion === null) return;
+            
+            const newAnswer = prompt('답변을 수정하세요:', faq.answer);
+            if (newAnswer === null) return;
+            
+            faqs[index] = {
+                question: newQuestion.trim(),
+                answer: newAnswer.trim()
+            };
+            
+            saveFaqs(faqs);
+            alert('✅ FAQ가 수정되었습니다.');
+        }
+
+        // 기본 FAQ 불러오기
+        function loadDefaultFaqs() {
+            if (!confirm('기본 FAQ를 불러오시겠습니까?\n기존 FAQ는 유지되고 기본 FAQ가 추가됩니다.')) {
+                return;
+            }
+            
+            const faqs = loadFaqs();
+            
+            // 중복 체크 후 추가
+            DEFAULT_FAQS.forEach(defaultFaq => {
+                const exists = faqs.some(faq => 
+                    faq.question.toLowerCase() === defaultFaq.question.toLowerCase()
+                );
+                
+                if (!exists) {
+                    faqs.push(defaultFaq);
+                }
+            });
+            
+            saveFaqs(faqs);
+            alert(`✅ ${DEFAULT_FAQS.length}개의 기본 FAQ가 추가되었습니다!`);
+        }
+
+        // 전체 삭제
+        function clearAllFaqs() {
+            if (!confirm('⚠️ 정말 모든 FAQ를 삭제하시겠습니까?\n이 작업은 되돌릴 수 없습니다.')) {
+                return;
+            }
+            
+            if (!confirm('⚠️ 한 번 더 확인합니다. 정말 삭제하시겠습니까?')) {
+                return;
+            }
+            
+            saveFaqs([]);
+            alert('✅ 모든 FAQ가 삭제되었습니다.');
+        }
+
+        // 페이지 로드 시 실행
+        window.addEventListener('load', function() {
+            // 인증 체크
+            if (!checkAuth()) return;
+            
+            // 데이터 렌더링
+            renderFaqs();
+            updateStats();
+            
+            // 5초마다 통계 업데이트
+            setInterval(updateStats, 5000);
+        });
+    </script>
+</body>
+</html>
