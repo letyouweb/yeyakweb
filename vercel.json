@@ -5,67 +5,67 @@
   "redirects": [
     {
       "source": "/ordinarymung/:path*",
-      "destination": "https://yeyakweb-puppyhotel.vercel.app/:path*?shop=ordinarymung",
+      "destination": "https://예약봇.kr/:path*?shop=ordinarymung",
       "permanent": false
     },
     {
       "source": "/chardor/:path*",
-      "destination": "https://yeyakweb-puppyhotel.vercel.app/:path*?shop=chardor",
+      "destination": "https://예약봇.kr/:path*?shop=chardor",
       "permanent": false
     },
     {
       "source": "/hallohund/:path*",
-      "destination": "https://yeyakweb-puppyhotel.vercel.app/:path*?shop=hallohund",
+      "destination": "https://예약봇.kr/:path*?shop=hallohund",
       "permanent": false
     },
     {
       "source": "/dgroo_o/:path*",
-      "destination": "https://yeyakweb-puppyhotel.vercel.app/:path*?shop=dgroo_o",
+      "destination": "https://예약봇.kr/:path*?shop=dgroo_o",
       "permanent": false
     },
     {
       "source": "/groomingtime/:path*",
-      "destination": "https://yeyakweb-puppyhotel.vercel.app/:path*?shop=groomingtime",
+      "destination": "https://예약봇.kr/:path*?shop=groomingtime",
       "permanent": false
     },
     {
       "source": "/petsalon/:path*",
-      "destination": "https://yeyakweb-puppyhotel.vercel.app/:path*?shop=petsalon",
+      "destination": "https://예약봇.kr/:path*?shop=petsalon",
       "permanent": false
     },
     {
       "source": "/oodangdang/:path*",
-      "destination": "https://yeyakweb-puppyhotel.vercel.app/:path*?shop=oodangdang",
+      "destination": "https://예약봇.kr/:path*?shop=oodangdang",
       "permanent": false
     },
     {
       "source": "/미용하는강아지/:path*",
-      "destination": "https://yeyakweb-puppyhotel.vercel.app/:path*?shop=미용하는강아지",
+      "destination": "https://예약봇.kr/:path*?shop=미용하는강아지",
       "permanent": false
     },
     {
       "source": "/puppy/:path*",
-      "destination": "https://yeyakweb-puppyhotel.vercel.app/:path*?shop=puppy",
+      "destination": "https://예약봇.kr/:path*?shop=puppy",
       "permanent": false
     },
     {
       "source": "/puppycare/:path*",
-      "destination": "https://yeyakweb-puppyhotel.vercel.app/:path*?shop=puppycare",
+      "destination": "https://예약봇.kr/:path*?shop=puppycare",
       "permanent": false
     },
     {
       "source": "/pet/:path*",
-      "destination": "https://yeyakweb-puppyhotel.vercel.app/:path*?shop=pet",
+      "destination": "https://예약봇.kr/:path*?shop=pet",
       "permanent": false
     },
     {
       "source": "/petcare/:path*",
-      "destination": "https://yeyakweb-puppyhotel.vercel.app/:path*?shop=petcare",
+      "destination": "https://예약봇.kr/:path*?shop=petcare",
       "permanent": false
     },
     {
       "source": "/pethotel/:path*",
-      "destination": "https://yeyakweb-puppyhotel.vercel.app/:path*?shop=pethotel",
+      "destination": "https://예약봇.kr/:path*?shop=pethotel",
       "permanent": false
     }
   ]
