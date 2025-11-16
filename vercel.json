@@ -2,62 +2,71 @@
   "buildCommand": null,
   "outputDirectory": ".",
   "installCommand": null,
-  "routes": [
+  "redirects": [
     {
-      "src": "/ordinarymung",
-      "dest": "/ordinarymung/index.html"
+      "source": "/ordinarymung/:path*",
+      "destination": "https://yeyakweb-puppyhotel.vercel.app/:path*?shop=ordinarymung",
+      "permanent": false
     },
     {
-      "src": "/chardor",
-      "dest": "/chardor/index.html"
+      "source": "/chardor/:path*",
+      "destination": "https://yeyakweb-puppyhotel.vercel.app/:path*?shop=chardor",
+      "permanent": false
     },
     {
-      "src": "/hallohund",
-      "dest": "/hallohund/index.html"
+      "source": "/hallohund/:path*",
+      "destination": "https://yeyakweb-puppyhotel.vercel.app/:path*?shop=hallohund",
+      "permanent": false
     },
     {
-      "src": "/dgroo_o",
-      "dest": "/dgroo_o/index.html"
+      "source": "/dgroo_o/:path*",
+      "destination": "https://yeyakweb-puppyhotel.vercel.app/:path*?shop=dgroo_o",
+      "permanent": false
     },
     {
-      "src": "/groomingtime",
-      "dest": "/groomingtime/index.html"
+      "source": "/groomingtime/:path*",
+      "destination": "https://yeyakweb-puppyhotel.vercel.app/:path*?shop=groomingtime",
+      "permanent": false
     },
     {
-      "src": "/petsalon",
-      "dest": "/petsalon/index.html"
+      "source": "/petsalon/:path*",
+      "destination": "https://yeyakweb-puppyhotel.vercel.app/:path*?shop=petsalon",
+      "permanent": false
     },
     {
-      "src": "/oodangdang",
-      "dest": "/oodangdang/index.html"
+      "source": "/oodangdang/:path*",
+      "destination": "https://yeyakweb-puppyhotel.vercel.app/:path*?shop=oodangdang",
+      "permanent": false
     },
     {
-      "src": "/미용하는강아지",
-      "dest": "/미용하는강아지/index.html"
+      "source": "/미용하는강아지/:path*",
+      "destination": "https://yeyakweb-puppyhotel.vercel.app/:path*?shop=미용하는강아지",
+      "permanent": false
     },
     {
-      "src": "/puppy",
-      "dest": "/puppy/index.html"
+      "source": "/puppy/:path*",
+      "destination": "https://yeyakweb-puppyhotel.vercel.app/:path*?shop=puppy",
+      "permanent": false
     },
     {
-      "src": "/puppycare",
-      "dest": "/puppycare/index.html"
+      "source": "/puppycare/:path*",
+      "destination": "https://yeyakweb-puppyhotel.vercel.app/:path*?shop=puppycare",
+      "permanent": false
     },
     {
-      "src": "/pet",
-      "dest": "/pet/index.html"
+      "source": "/pet/:path*",
+      "destination": "https://yeyakweb-puppyhotel.vercel.app/:path*?shop=pet",
+      "permanent": false
     },
     {
-      "src": "/petcare",
-      "dest": "/petcare/index.html"
+      "source": "/petcare/:path*",
+      "destination": "https://yeyakweb-puppyhotel.vercel.app/:path*?shop=petcare",
+      "permanent": false
     },
     {
-      "src": "/pethotel",
-      "dest": "/pethotel/index.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "source": "/pethotel/:path*",
+      "destination": "https://yeyakweb-puppyhotel.vercel.app/:path*?shop=pethotel",
+      "permanent": false
     }
   ]
 }
