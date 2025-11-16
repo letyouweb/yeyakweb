@@ -1,5 +1,63 @@
 {
   "buildCommand": null,
   "outputDirectory": ".",
-  "installCommand": null
+  "installCommand": null,
+  "routes": [
+    {
+      "src": "/ordinarymung",
+      "dest": "/ordinarymung/index.html"
+    },
+    {
+      "src": "/chardor",
+      "dest": "/chardor/index.html"
+    },
+    {
+      "src": "/hallohund",
+      "dest": "/hallohund/index.html"
+    },
+    {
+      "src": "/dgroo_o",
+      "dest": "/dgroo_o/index.html"
+    },
+    {
+      "src": "/groomingtime",
+      "dest": "/groomingtime/index.html"
+    },
+    {
+      "src": "/petsalon",
+      "dest": "/petsalon/index.html"
+    },
+    {
+      "src": "/oodangdang",
+      "dest": "/oodangdang/index.html"
+    },
+    {
+      "src": "/미용하는강아지",
+      "dest": "/미용하는강아지/index.html"
+    },
+    {
+      "src": "/puppy",
+      "dest": "/puppy/index.html"
+    },
+    {
+      "src": "/puppycare",
+      "dest": "/puppycare/index.html"
+    },
+    {
+      "src": "/pet",
+      "dest": "/pet/index.html"
+    },
+    {
+      "src": "/petcare",
+      "dest": "/petcare/index.html"
+    },
+    {
+      "src": "/pethotel",
+      "dest": "/pethotel/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
 }
