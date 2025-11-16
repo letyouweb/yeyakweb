@@ -5,13 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>우댕댕펫살롱 - 리다이렉트 중...</title>
     <script>
-        const shopId = 'oodangdang';
-        const params = new URLSearchParams(window.location.search);
-        params.set('shop', shopId);
-        
-        const path = window.location.pathname.replace('/oodangdang', '');
-        const targetUrl = `https://yeyakweb-puppyhotel.vercel.app${path}?${params.toString()}`;
-        window.location.replace(targetUrl);
+        window.location.replace('/shop/?shop=oodangdang');
     </script>
 </head>
 <body>

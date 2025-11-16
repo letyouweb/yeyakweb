@@ -5,13 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>미용하는강아지 - 리다이렉트 중...</title>
     <script>
-        const shopId = '미용하는강아지';
-        const params = new URLSearchParams(window.location.search);
-        params.set('shop', shopId);
-        
-        const path = window.location.pathname.replace('/미용하는강아지', '');
-        const targetUrl = `https://yeyakweb-puppyhotel.vercel.app${path}?${params.toString()}`;
-        window.location.replace(targetUrl);
+        window.location.replace('/shop/?shop=미용하는강아지');
     </script>
 </head>
 <body>
