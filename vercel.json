@@ -1,56 +1,5 @@
 {
-  "rewrites": [
-    {
-      "source": "/ordinarymung/:path*",
-      "destination": "https://예약봇.kr/:path*?shop=ordinarymung"
-    },
-    {
-      "source": "/chardor/:path*",
-      "destination": "https://예약봇.kr/:path*?shop=chardor"
-    },
-    {
-      "source": "/hallohund/:path*",
-      "destination": "https://예약봇.kr/:path*?shop=hallohund"
-    },
-    {
-      "source": "/dgroo_o/:path*",
-      "destination": "https://예약봇.kr/:path*?shop=dgroo_o"
-    },
-    {
-      "source": "/groomingtime/:path*",
-      "destination": "https://예약봇.kr/:path*?shop=groomingtime"
-    },
-    {
-      "source": "/petsalon/:path*",
-      "destination": "https://예약봇.kr/:path*?shop=petsalon"
-    },
-    {
-      "source": "/oodangdang/:path*",
-      "destination": "https://예약봇.kr/:path*?shop=oodangdang"
-    },
-    {
-      "source": "/미용하는강아지/:path*",
-      "destination": "https://예약봇.kr/:path*?shop=미용하는강아지"
-    },
-    {
-      "source": "/puppy/:path*",
-      "destination": "https://예약봇.kr/:path*?shop=puppy"
-    },
-    {
-      "source": "/puppycare/:path*",
-      "destination": "https://예약봇.kr/:path*?shop=puppycare"
-    },
-    {
-      "source": "/pet/:path*",
-      "destination": "https://예약봇.kr/:path*?shop=pet"
-    },
-    {
-      "source": "/petcare/:path*",
-      "destination": "https://예약봇.kr/:path*?shop=petcare"
-    },
-    {
-      "source": "/pethotel/:path*",
-      "destination": "https://예약봇.kr/:path*?shop=pethotel"
-    }
-  ]
+  "buildCommand": null,
+  "outputDirectory": ".",
+  "installCommand": null
 }

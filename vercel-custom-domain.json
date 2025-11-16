@@ -1,0 +1,56 @@
+{
+  "rewrites": [
+    {
+      "source": "/ordinarymung/:path*",
+      "destination": "https://xn--9k3b23x.kr/:path*?shop=ordinarymung"
+    },
+    {
+      "source": "/chardor/:path*",
+      "destination": "https://xn--9k3b23x.kr/:path*?shop=chardor"
+    },
+    {
+      "source": "/hallohund/:path*",
+      "destination": "https://xn--9k3b23x.kr/:path*?shop=hallohund"
+    },
+    {
+      "source": "/dgroo_o/:path*",
+      "destination": "https://xn--9k3b23x.kr/:path*?shop=dgroo_o"
+    },
+    {
+      "source": "/groomingtime/:path*",
+      "destination": "https://xn--9k3b23x.kr/:path*?shop=groomingtime"
+    },
+    {
+      "source": "/petsalon/:path*",
+      "destination": "https://xn--9k3b23x.kr/:path*?shop=petsalon"
+    },
+    {
+      "source": "/oodangdang/:path*",
+      "destination": "https://xn--9k3b23x.kr/:path*?shop=oodangdang"
+    },
+    {
+      "source": "/미용하는강아지/:path*",
+      "destination": "https://xn--9k3b23x.kr/:path*?shop=미용하는강아지"
+    },
+    {
+      "source": "/puppy/:path*",
+      "destination": "https://xn--9k3b23x.kr/:path*?shop=puppy"
+    },
+    {
+      "source": "/puppycare/:path*",
+      "destination": "https://xn--9k3b23x.kr/:path*?shop=puppycare"
+    },
+    {
+      "source": "/pet/:path*",
+      "destination": "https://xn--9k3b23x.kr/:path*?shop=pet"
+    },
+    {
+      "source": "/petcare/:path*",
+      "destination": "https://xn--9k3b23x.kr/:path*?shop=petcare"
+    },
+    {
+      "source": "/pethotel/:path*",
+      "destination": "https://xn--9k3b23x.kr/:path*?shop=pethotel"
+    }
+  ]
+}
